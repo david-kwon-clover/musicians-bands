@@ -94,9 +94,25 @@ describe('Band, Musician, and Song Models', () => {
         await testBand.destroy();
         expect(await Band.findAll()).toHaveLength(0);
     })
-
+    
     test('can delete a Musician', async () => {
         // TODO - test deleting a musician
-        expect('NO TEST').toBe('EXPECTED VALUE HERE');
+        const testMusician = await Musician.create({
+            name: "John Mayer",
+            genre: "Guitar"
+        })
+        await testMusician.destroy();
+        expect(await Musician.findAll()).toHaveLength(0);
+    })
+
+    test('can delete a Song', async () => {
+        // TODO - test deleting a song
+        const testSong = await Song.create({
+            title: "Farting Forever",
+            year: 2010,
+            length: 123
+        })
+        await testSong.destroy();
+        expect(await Song.findAll()).toHaveLength(0);
     })
 })
