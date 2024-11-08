@@ -1,5 +1,6 @@
 const { sequelize } = require('./db');
-const { Band, Musician, Song } = require('./index')
+const { Band, Musician, Song } = require('./index');
+const { describe, test, expect } = require("@jest/globals");
 
 describe('Band, Musician, and Song Models', () => {
     /**
@@ -14,7 +15,13 @@ describe('Band, Musician, and Song Models', () => {
 
     test('can create a Band', async () => {
         // TODO - test creating a band
-        expect('NO TEST').toBe('EXPECTED VALUE HERE');
+        const testBand = await Band.create({
+            name: "Linkin Park",
+            genre: "Rock"
+        })
+        expect(testBand.id).not.toBeNull();
+        expect(testBand.name).toBe("Linkin Park");
+        expect(testBand.genre).toBe("Rock");
     })
 
     test('can create a Musician', async () => {
