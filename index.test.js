@@ -6,7 +6,7 @@ describe('Band, Musician, and Song Models', () => {
     /**
      * Runs the code prior to all tests
      */
-    beforeAll(async () => {
+    beforeEach(async () => {
         // the 'sync' method will create tables based on the model class
         // by setting 'force:true' the tables are recreated each time the 
         // test suite is run
@@ -87,7 +87,12 @@ describe('Band, Musician, and Song Models', () => {
 
     test('can delete a Band', async () => {
         // TODO - test deleting a band
-        expect('NO TEST').toBe('EXPECTED VALUE HERE');
+        const testBand = await Band.create({
+            name: "Linkin Park",
+            genre: "Rock"
+        })
+        await testBand.destroy();
+        expect(await Band.findAll()).toHaveLength(0);
     })
 
     test('can delete a Musician', async () => {
