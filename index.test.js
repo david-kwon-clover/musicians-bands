@@ -59,10 +59,30 @@ describe('Band, Musician, and Song Models', () => {
         })
         expect(testBand.genre).toBe("American Rock");
     })
-
+    
     test('can update a Musician', async () => {
         // TODO - test updating a musician
-        expect('NO TEST').toBe('EXPECTED VALUE HERE');
+        const testMusician = await Musician.create({
+            name: "John Legend",
+            instrument: "Guitar"
+        });
+        await testMusician.update({
+            instrument: "Electric Guitar"
+        })
+        expect(testMusician.instrument).toBe("Electric Guitar");
+    })
+
+    test('can update a Song', async () => {
+        // TODO - test updating a song
+        const testSong = await Song.create({
+            title: "Farting Forever",
+            year: 2010,
+            length: 123
+        });
+        await testSong.update({
+            year: 2012
+        })
+        expect(testSong.year).toBe(2012);
     })
 
     test('can delete a Band', async () => {
