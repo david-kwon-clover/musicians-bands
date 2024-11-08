@@ -23,10 +23,29 @@ describe('Band, Musician, and Song Models', () => {
         expect(testBand.name).toBe("Linkin Park");
         expect(testBand.genre).toBe("Rock");
     })
-
+    
     test('can create a Musician', async () => {
         // TODO - test creating a musician
-        expect('NO TEST').toBe('EXPECTED VALUE HERE');
+        const testMusician = await Musician.create({
+            name: "John Mayer",
+            instrument: "Guitar"
+        })
+        expect(testMusician.id).not.toBeNull();
+        expect(testMusician.name).toBe("John Mayer");
+        expect(testMusician.instrument).toBe("Guitar");
+    })
+
+    test('can create a Song', async () => {
+        // TODO - test creating a musician
+        const testSong = await Song.create({
+            title: "Farting Forever",
+            year: 2010,
+            length: 123
+        })
+        expect(testSong.id).not.toBeNull();
+        expect(testSong.title).toBe("Farting Forever");
+        expect(testSong.year).toBe(2010);
+        expect(testSong.length).toBe(123);
     })
 
     test('can update a Band', async () => {
