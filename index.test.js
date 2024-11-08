@@ -50,7 +50,14 @@ describe('Band, Musician, and Song Models', () => {
 
     test('can update a Band', async () => {
         // TODO - test updating a band
-        expect('NO TEST').toBe('EXPECTED VALUE HERE');
+        const testBand = await Band.create({
+            name: "Linkin Park",
+            genre: "Rock"
+        });
+        await testBand.update({
+            genre: "American Rock"
+        })
+        expect(testBand.genre).toBe("American Rock");
     })
 
     test('can update a Musician', async () => {
